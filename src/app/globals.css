@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-operate-navy: #001C36;
+  --color-operate-blue: #00558C;
+  --color-operate-orange: #F09200;
+  --color-operate-orange-hover: #D98200;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+}
+
+.concrete-texture {
+  background-color: #F4F5F7;
+  background-image: radial-gradient(rgba(0, 28, 54, 0.04) 1px, transparent 0),
+    radial-gradient(rgba(0, 85, 140, 0.03) 1px, transparent 0);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+}

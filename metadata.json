@@ -1,0 +1,6 @@
+{
+  "name": "OperateServices Staffing & Services",
+  "description": "Recruiting & Staffing Agency — Powering Businesses & Advancing Careers across manufacturing, engineering, logistics, and skilled trades.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
