@@ -20,22 +20,25 @@ jobs:
         run: |
           set -e
 
-          echo "🔑 Preparing SSH environment on GitHub runner..."
+          echo "🔑 [Step 1] Preparing SSH keys..."
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
 
-          # Save private key securely
-          printf "%s\n" "$SSH_KEY" > ~/.ssh/deploy_key
+          # Strip Windows carriage returns (\r) and ensure valid UNIX PEM format
+          printf "%s\n" "$SSH_KEY" | tr -d '\r' > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
 
-          # Validate key syntax
-          ssh-keygen -l -f ~/.ssh/deploy_key || echo "Note: checking key format"
+          # Verify key structure
+          ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/deploy_key.pub || echo "Key format checked"
 
           # Configure SSH client
-          cat << 'EOF' > ~/.ssh/config
+          TARGET_HOST="${SERVER_HOST:-134.209.157.238}"
+          TARGET_USER="${SERVER_USER:-root}"
+
+          cat << EOF > ~/.ssh/config
           Host production
-            HostName 134.209.157.238
-            User root
+            HostName $TARGET_HOST
+            User $TARGET_USER
             Port 22
             IdentityFile ~/.ssh/deploy_key
             StrictHostKeyChecking accept-new
@@ -43,16 +46,11 @@ jobs:
             ConnectTimeout 30
           EOF
 
-          # Override with secrets if provided
-          if [ -n "$SERVER_HOST" ]; then
-            sed -i "s/134.209.157.238/$SERVER_HOST/g" ~/.ssh/config
-          fi
-          if [ -n "$SERVER_USER" ]; then
-            sed -i "s/User root/User $SERVER_USER/g" ~/.ssh/config
-          fi
+          echo "🚀 [Step 2] Testing SSH authentication to $TARGET_USER@$TARGET_HOST..."
+          ssh -v production "echo '✅ SSH connection authenticated successfully as \$(whoami) on \$(hostname)!'"
 
-          echo "🚀 Connecting to server via SSH..."
-          ssh -v production 'bash -s' << 'REMOTESCRIPT'
+          echo "📦 [Step 3] Executing remote deployment script on Droplet..."
+          ssh production 'bash -s' << 'REMOTESCRIPT'
             set -e
 
             echo "🚀 [1/6] Loading Environment & Node.js on Droplet..."
