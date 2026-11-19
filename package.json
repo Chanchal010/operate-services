@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "npm run generate:llms && next build --webpack && npm run validate:seo",
+    "build:clean": "next build --webpack",
+    "generate:llms": "tsx scripts/generate-llms.ts",
+    "submit:indexnow": "tsx scripts/submit-indexnow.ts",
+    "validate:seo": "node scripts/validate-build.mjs",
     "start": "next start",
     "lint": "tsc --noEmit",
     "test": "tsx --test src/utils/jobs.test.ts src/utils/formValidation.test.ts src/utils/careerFilters.test.ts"

@@ -22,4 +22,7 @@ pm2 reload ecosystem.config.cjs --update-env || pm2 start ecosystem.config.cjs
 echo "💾 Saving PM2 process list..."
 pm2 save
 
+echo "📡 Submitting canonical URLs to IndexNow..."
+npm run submit:indexnow || true
+
 echo "✅ OperateServices successfully deployed!"

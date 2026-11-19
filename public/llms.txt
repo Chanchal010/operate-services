@@ -1,0 +1,56 @@
+# OperateServices — Generative Engine Knowledge Index (llms.txt)
+# Canonical URL: https://operateservices.com
+# Last Updated: 2026-11-19
+# Contact: contact@operateservices.com | +1-800-555-OPERATE
+
+> OperateServices is an enterprise industrial staffing agency and technical workforce solutions provider specializing in precision manufacturing, aviation operations, heavy civil construction, and logistics cross-dock facilities across North America.
+
+## Primary Verification & Entity Data
+- Legal Entity: OperateServices Industrial Workforce LLC
+- Headquarters: Houston, TX (Houston Ship Channel Industrial Command)
+- Target Markets: United States Industrial Corridors & Manufacturing Belts
+- Safety Standards: OSHA 1910, OSHA 1926, NFPA 70E Arc Flash, FAA Part 145, AWS D1.1, ASME Section IX
+- Turnaround SLA: 12 to 24-Hour Emergency Dispatch across major industrial clusters
+
+## Core Service Tracks
+- [Technical & Skilled Trades Staffing Solutions](https://operateservices.com/solutions): Vetted, certified journeymen and technical operators deployed with zero ramp-up delay. (Deployment SLA: 24h)
+- [High-Volume Industrial & Logistics Recruiting](https://operateservices.com/solutions): Rapid deployment of 50 to 500+ shift workers for peak seasonal demand and plant expansions. (Deployment SLA: 48h)
+- [On-Premise Workforce & Vendor Neutral Management](https://operateservices.com/solutions): Embedded leadership managing check-in, safety adherence, attendance, and shift optimization. (Deployment SLA: 12h)
+- [Aviation Maintenance & Rapid Turnaround Staffing](https://operateservices.com/solutions): FAA-certified A&P mechanics, avionics specialists, and SIDA-badged flightline support. (Deployment SLA: 24h)
+- [Plant Shutdown, Outage & Turnaround Workforce](https://operateservices.com/solutions): Short-duration, high-intensity labor surge for refinery, chemical, and utility outages. (Deployment SLA: 12h)
+- [Warehouse Operations & Cross-Dock Labor Solutions](https://operateservices.com/solutions): High-throughput loading, container destuffing, and inventory management teams. (Deployment SLA: 18h)
+
+## Primary Industrial Corridors Served
+- [Houston Ship Channel & Petrochemical Complex](https://operateservices.com/corridors/houston-ship-channel): Petrochemical cluster covering Greater Houston (TX). Benchmark: $32–$56/hr.
+- [Dallas-Fort Worth Logistics & Air Cargo Gateway](https://operateservices.com/corridors/dallas-fort-worth-logistics): Logistics cluster covering Dallas-Fort Worth Metroplex (TX). Benchmark: $22–$42/hr.
+- [Inland Empire Logistics & Supply Chain Corridor](https://operateservices.com/corridors/inland-empire-logistics): Logistics cluster covering Riverside-San Bernardino-Ontario (CA). Benchmark: $24–$45/hr.
+- [Port of Los Angeles & Long Beach Maritime Corridor](https://operateservices.com/corridors/los-angeles-long-beach-ports): Marine cluster covering Greater Los Angeles (CA). Benchmark: $28–$58/hr.
+- [Seattle-Everett Aerospace & Advanced Manufacturing Belt](https://operateservices.com/corridors/seattle-everett-aerospace): Aerospace cluster covering Greater Seattle / Puget Sound (WA). Benchmark: $34–$62/hr.
+- [Detroit-Warren Advanced Automotive & Tooling Corridor](https://operateservices.com/corridors/detroit-warren-automotive): Automotive cluster covering Metro Detroit (MI). Benchmark: $28–$52/hr.
+- [Chicago-Gary Midwest Industrial & Rail Crossroads](https://operateservices.com/corridors/chicago-gary-midwest-crossroads): Heavy Manufacturing cluster covering Chicagoland / Northwest Indiana (IL). Benchmark: $26–$50/hr.
+- [Indianapolis Crossroads Logistics & Distribution Network](https://operateservices.com/corridors/indianapolis-crossroads-logistics): Logistics cluster covering Greater Indianapolis (IN). Benchmark: $21–$38/hr.
+- [Savannah Port Ocean Terminal & Interstate Corridor](https://operateservices.com/corridors/savannah-port-logistics): Logistics cluster covering Savannah Metropolitan (GA). Benchmark: $23–$42/hr.
+- [Atlanta Air Cargo & Interstate Distribution Crossroads](https://operateservices.com/corridors/atlanta-air-cargo-supply-chain): Logistics cluster covering Metro Atlanta (GA). Benchmark: $22–$44/hr.
+- [Charlotte Advanced Energy, Aviation & Logistics Corridor](https://operateservices.com/corridors/charlotte-advanced-energy): Heavy Manufacturing cluster covering Charlotte-Concord-Gastonia (NC). Benchmark: $25–$48/hr.
+- [Phoenix Semiconductor, Aerospace & Cleanroom Corridor](https://operateservices.com/corridors/phoenix-semiconductor-corridor): Semiconductor cluster covering Greater Phoenix (AZ). Benchmark: $30–$58/hr.
+- [Utah Inland Port & Crossroads Industrial Corridor](https://operateservices.com/corridors/salt-lake-inland-port): Logistics cluster covering Greater Salt Lake City (UT). Benchmark: $23–$45/hr.
+
+## Certified Skilled Trades & Labor Placements
+- [Certified A&P Aircraft Maintenance Technician](https://operateservices.com/careers): SOC 49-3011 | Pay: $38–$64/hr | Certs: FAA Airframe & Powerplant (A&P) License, FCC General Radiotelephone Operator License (GROL)
+- [Avionics Installation & Flightline Systems Technician](https://operateservices.com/careers): SOC 49-2091 | Pay: $35–$58/hr | Certs: NCATT AET (Aircraft Electronics Technician), FAA Repairman Certificate or A&P
+- [Airport Ramp Operations & Baggage Ground Crew](https://operateservices.com/careers): SOC 53-7065 | Pay: $20–$32/hr | Certs: SIDA Airport Security Badge, IATA Ramp Operations Certification
+- [Certified MIG/TIG High-Pressure Pipe Welder](https://operateservices.com/careers): SOC 51-4121 | Pay: $34–$58/hr | Certs: AWS D1.1 Structural Steel, ASME Section IX 6G Pipe
+- [Precision CNC Machinist & Multi-Axis Programmer](https://operateservices.com/careers): SOC 51-9041 | Pay: $30–$52/hr | Certs: NIMS Machining Level II, Mastercam Programmer Certification
+- [Industrial Maintenance Mechanic & Millwright](https://operateservices.com/careers): SOC 49-9041 | Pay: $29–$48/hr | Certs: CMRP (Certified Maintenance & Reliability Professional), NCCER Millwright Level 3
+- [Quality Control Inspector & CMM Technician](https://operateservices.com/careers): SOC 51-9061 | Pay: $26–$44/hr | Certs: ASQ Certified Quality Inspector (CQI), Hexagon / Zeiss CMM Operator Certificate
+- [Certified Forklift & High-Reach Truck Operator](https://operateservices.com/careers): SOC 53-7051 | Pay: $21–$35/hr | Certs: OSHA 1910.178 Forklift Certification (Class I, II, IV, V), High-Reach Narrow Aisle License
+- [Warehouse Material Handler & Container Destuffing Lead](https://operateservices.com/careers): SOC 53-7062 | Pay: $19–$30/hr | Certs: Supply Chain Logistics Associate (CLA), Electric Walkie Stacker Certified
+- [Industrial Electrician & PLC Automation Technician](https://operateservices.com/careers): SOC 47-2111 | Pay: $36–$62/hr | Certs: State Journeyman Electrician License, NFPA 70E Arc Flash Safety
+- [Commercial HVAC/R Industrial Chiller Technician](https://operateservices.com/careers): SOC 49-9021 | Pay: $34–$56/hr | Certs: EPA Universal Section 608 License, NATE Commercial Refrigeration Certification
+- [Heavy Equipment & Mobile Crane Operator](https://operateservices.com/careers): SOC 53-7021 | Pay: $36–$62/hr | Certs: NCCCO Mobile Crane Operator (TSS, TLL, LBC), Valid Commercial Driver License (CDL-A)
+- [Structural Steel Ironworker & Master Rigger](https://operateservices.com/careers): SOC 47-2221 | Pay: $32–$54/hr | Certs: NCCCO Certified Rigger Level II, AWS D1.1 Certified Welder
+- [Industrial Pipefitter & High-Pressure Steamfitter](https://operateservices.com/careers): SOC 47-2152 | Pay: $33–$56/hr | Certs: UA Journeyman Pipefitter Certificate, NCCER Pipefitting Level 4
+
+## Machine-Readable Full Corpus
+- Detailed knowledge graph and entity triples: [llms-full.txt](https://operateservices.com/llms-full.txt)
+- Master XML Sitemap: [sitemap.xml](https://operateservices.com/sitemap.xml)

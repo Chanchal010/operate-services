@@ -17,7 +17,7 @@ import { ContactFormValues, SpecializationCategory } from '@/types/career';
 import { validateContactForm } from '@/utils/careerFilters';
 
 export interface ActiveModalState {
-  topic: 'specialization' | 'service' | 'insights' | 'contractor-login' | 'contact';
+  topic: 'specialization' | 'service' | 'insights' | 'contractor-login' | 'contact' | 'talent-network';
   slug?: string;
 }
 
@@ -47,6 +47,16 @@ export const CareerResourceModals: React.FC<CareerResourceModalsProps> = ({
     Partial<Record<keyof ContactFormValues, string>>
   >({});
   const [contactSent, setContactSent] = useState(false);
+
+  const [talentForm, setTalentForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    specialization: 'Manufacturing & Production',
+    location: '',
+  });
+  const [talentJoined, setTalentJoined] = useState(false);
+  const [talentError, setTalentError] = useState<string | null>(null);
 
   if (!modal) return null;
 
@@ -86,6 +96,16 @@ export const CareerResourceModals: React.FC<CareerResourceModalsProps> = ({
     }
     setContactErrors({});
     setContactSent(true);
+  };
+
+  const handleTalentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!talentForm.name.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(talentForm.email.trim())) {
+      setTalentError('Please enter your full name and a valid email address.');
+      return;
+    }
+    setTalentError(null);
+    setTalentJoined(true);
   };
 
   return (
@@ -455,6 +475,159 @@ export const CareerResourceModals: React.FC<CareerResourceModalsProps> = ({
                     className="px-5 py-2 rounded-lg bg-[#E85D04] hover:bg-[#CF5102] text-white text-sm font-semibold transition-colors"
                   >
                     Send Inquiry
+                  </button>
+                </div>
+              </form>
+            )}
+          </>
+        )}
+
+        {/* Talent Network Modal */}
+        {modal.topic === 'talent-network' && (
+          <>
+            <div className="flex items-start justify-between gap-4 pb-4 border-b border-slate-200">
+              <div>
+                <p className="text-xs font-semibold text-[#00558C] uppercase tracking-wider">
+                  Future Opportunities
+                </p>
+                <h2 className="font-display font-bold text-2xl text-[#081C31] mt-1">
+                  Join the OperateServices Talent Network
+                </h2>
+              </div>
+              <button
+                type="button"
+                aria-label="Close modal"
+                onClick={onClose}
+                className="p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
+              >
+                <X className="w-5 h-5" aria-hidden="true" />
+              </button>
+            </div>
+
+            {talentJoined ? (
+              <div className="py-8 text-center space-y-3">
+                <CheckCircle2 className="w-12 h-12 text-[#00558C] mx-auto" aria-hidden="true" />
+                <h3 className="font-display font-bold text-xl text-[#081C31]">
+                  You&apos;re Connected!
+                </h3>
+                <p className="text-sm text-slate-600 max-w-md mx-auto">
+                  Thank you, <span className="font-semibold text-[#081C31]">{talentForm.name}</span>. You have joined our Talent Network for <span className="font-semibold text-[#081C31]">{talentForm.specialization}</span>. Our local industrial staffing recruiters will notify you whenever matching roles open.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setTalentJoined(false);
+                    onClose();
+                  }}
+                  className="mt-4 px-6 py-2.5 rounded-lg bg-[#001C36] text-white text-sm font-semibold hover:bg-[#00558C] transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleTalentSubmit} className="py-5 space-y-4" noValidate>
+                <p className="text-sm text-slate-600">
+                  Not ready to apply today? Sign up below and our team will match your skillset and certifications with upcoming industrial and skilled trade openings in your target corridor.
+                </p>
+
+                {talentError && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-xs font-medium text-red-700">
+                    {talentError}
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="talent-name" className="block text-xs font-semibold text-slate-700 mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      id="talent-name"
+                      type="text"
+                      required
+                      value={talentForm.name}
+                      onChange={(e) => setTalentForm((f) => ({ ...f, name: e.target.value }))}
+                      placeholder="e.g. Alex Morgan"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-[#00558C]"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="talent-email" className="block text-xs font-semibold text-slate-700 mb-1">
+                      Email Address *
+                    </label>
+                    <input
+                      id="talent-email"
+                      type="email"
+                      required
+                      value={talentForm.email}
+                      onChange={(e) => setTalentForm((f) => ({ ...f, email: e.target.value }))}
+                      placeholder="alex@example.com"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-[#00558C]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="talent-phone" className="block text-xs font-semibold text-slate-700 mb-1">
+                      Phone Number (Optional)
+                    </label>
+                    <input
+                      id="talent-phone"
+                      type="tel"
+                      value={talentForm.phone}
+                      onChange={(e) => setTalentForm((f) => ({ ...f, phone: e.target.value }))}
+                      placeholder="(555) 000-0000"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-[#00558C]"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="talent-location" className="block text-xs font-semibold text-slate-700 mb-1">
+                      Target City / Corridor
+                    </label>
+                    <input
+                      id="talent-location"
+                      type="text"
+                      value={talentForm.location}
+                      onChange={(e) => setTalentForm((f) => ({ ...f, location: e.target.value }))}
+                      placeholder="e.g. Columbus, OH or Inland Empire, CA"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-[#00558C]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="talent-specialization" className="block text-xs font-semibold text-slate-700 mb-1">
+                    Primary Specialization of Interest
+                  </label>
+                  <select
+                    id="talent-specialization"
+                    value={talentForm.specialization}
+                    onChange={(e) => setTalentForm((f) => ({ ...f, specialization: e.target.value }))}
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm bg-white focus:outline-[#00558C]"
+                  >
+                    <option value="Manufacturing & Production">Manufacturing & Production</option>
+                    <option value="Aviation & Airport Operations">Aviation & Airport Operations</option>
+                    <option value="Construction">Construction</option>
+                    <option value="Distribution & Logistics">Distribution & Logistics</option>
+                    <option value="Facilities & Maintenance">Facilities & Maintenance</option>
+                    <option value="Internal Corporate">Internal Careers at OperateServices</option>
+                  </select>
+                </div>
+
+                <div className="flex justify-end gap-3 pt-4 border-t border-slate-200">
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="px-4 py-2.5 rounded-lg border border-slate-300 text-sm font-semibold text-[#081C31] hover:bg-slate-50 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-6 py-2.5 rounded-lg bg-[#001C36] hover:bg-[#00558C] text-white text-sm font-bold tracking-wide transition-colors"
+                  >
+                    Join Talent Network
                   </button>
                 </div>
               </form>

@@ -96,9 +96,10 @@ export function JobSearchSection({
 
             <button
               type="submit"
-              className="h-14 sm:h-16 px-10 rounded-full bg-[#001C36] hover:bg-[#00558C] text-white text-base sm:text-lg font-bold transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-md"
+              className="h-14 sm:h-16 px-10 rounded-full bg-[#001C36] hover:bg-[#00558C] text-white text-base sm:text-lg font-bold transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-md inline-flex items-center justify-center gap-2.5"
             >
-              Search Jobs
+              <Search className="w-5 h-5" aria-hidden="true" />
+              <span>Search Jobs</span>
             </button>
           </form>
 
@@ -121,16 +122,25 @@ export function JobSearchSection({
                 </button>
               );
             })}
-          </div>
 
-          <div className="mt-6 text-center">
             <button
               type="button"
               onClick={onBrowseAll}
-              className="text-base font-bold text-[#00558C] hover:text-[#001C36] underline underline-offset-4 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-[#00558C] hover:text-[#001C36] underline underline-offset-4 cursor-pointer"
             >
-              Browse All Jobs
+              <span>Browse All Jobs</span>
+              <span aria-hidden="true">&rarr;</span>
             </button>
+          </div>
+
+          <div className="mt-6 pt-5 border-t border-slate-100 text-center text-sm text-slate-600">
+            <span>Not ready to apply? </span>
+            <a
+              href="/careers"
+              className="font-semibold text-[#00558C] hover:text-[#001C36] underline underline-offset-2 transition-colors"
+            >
+              Join our talent network to stay connected with us for future opportunities.
+            </a>
           </div>
         </div>
 

@@ -18,6 +18,7 @@ import {
   FAQS_DATA,
   SPECIALIZATIONS_DATA,
 } from '@/data/careerPortalData';
+import { QUICK_SEARCH_ROLES, WELDING_IMAGE } from '@/data/operateServicesData';
 import { SpecializationCategory } from '@/types/career';
 import { CareerResourceModals, ActiveModalState } from './CareerResourceModals';
 
@@ -109,117 +110,155 @@ export const CareerOpportunitiesView: React.FC<CareerOpportunitiesViewProps> = (
 
   return (
     <div className="bg-[#F8FAFC]">
-      {/* Hero Section */}
-      <section className="bg-[#081C31] text-white">
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-          <div className="lg:col-span-7 flex flex-col justify-center">
-            <p className="text-sm font-bold tracking-wider uppercase text-[#00A3E0] mb-3">
-              Career Opportunities at OperateServices
-            </p>
-            <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-[1.12] tracking-tight text-balance mb-6">
-              Find Industrial &amp; Skilled Trades Jobs That Build Your Future
-            </h1>
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed mb-8">
-              Whether you are looking for hands-on contract work in manufacturing, aviation, construction, and logistics—or building a long-term corporate career inside OperateServices—our recruiters connect your skills directly with leading employers.
-            </p>
+      {/* Hero Section with Atmospheric Workshop Backdrop */}
+      <section className="relative bg-[#001428] text-white overflow-hidden">
+        {/* Background image with dark industrial gradient overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={WELDING_IMAGE}
+            alt="Skilled trade welder fabricating steel with sparks"
+            className="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#001428]/95 via-[#001C36]/85 to-[#001428]" />
+        </div>
 
-            {/* Integrated Job Search Strip */}
+        <div className="relative z-10 max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 pt-16 sm:pt-20 pb-28 sm:pb-36 text-center">
+          <p className="text-sm font-bold tracking-wider uppercase text-[#00A3E0] mb-3">
+            Career Opportunities at OperateServices
+          </p>
+          <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight max-w-4xl mx-auto leading-tight mb-4">
+            Find Industrial &amp; Skilled Trades Jobs That Build Your Future
+          </h1>
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Direct placement, contract-to-hire, and skilled trade assignments backed by weekly pay, comprehensive benefits, and dedicated local recruiters across 13+ industrial corridors.
+          </p>
+        </div>
+      </section>
+
+      {/* Floating Aerotek-style Search Box Card (Matches Screenshot Exactly) */}
+      <section className="relative z-20 px-4 sm:px-8 lg:px-12 -mt-16 sm:-mt-24 pb-12">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="bg-white rounded-3xl shadow-[0_24px_60px_rgba(0,28,54,0.16)] border border-slate-100 p-8 sm:p-12">
             <form
               onSubmit={handleQuickSearch}
-              aria-label="Quick job search"
-              className="bg-white rounded-xl p-2.5 flex flex-col sm:flex-row items-stretch gap-2.5 shadow-xl max-w-2xl"
+              className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-5 items-end"
             >
-              <label className="flex-1 flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 focus-within:border-[#00558C]">
-                <Search className="w-4 h-4 text-slate-500 shrink-0" aria-hidden="true" />
-                <span className="sr-only">Job title or skill</span>
+              <div>
+                <label
+                  htmlFor="careers-keywords-input"
+                  className="block text-base sm:text-lg font-bold text-[#001C36] mb-2"
+                >
+                  I&apos;m Looking For:
+                </label>
                 <input
+                  id="careers-keywords-input"
                   type="text"
                   value={heroKeyword}
                   onChange={(e) => setHeroKeyword(e.target.value)}
-                  placeholder="Job title, skill, or keyword"
-                  className="w-full bg-transparent text-sm text-[#081C31] placeholder:text-slate-500 focus:outline-none"
+                  placeholder="Job Title, Industry, Keywords"
+                  className="w-full h-14 sm:h-16 px-5 sm:px-6 rounded-xl border border-slate-300 bg-white text-base sm:text-lg text-[#081C31] placeholder:text-slate-400 focus:outline-none focus:border-[#00558C] focus:ring-2 focus:ring-[#00558C]/20"
                 />
-              </label>
-              <label className="sm:w-52 flex items-center px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 focus-within:border-[#00558C]">
-                <span className="sr-only">City, state, or ZIP</span>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="careers-location-input"
+                  className="block text-base sm:text-lg font-bold text-[#001C36] mb-2"
+                >
+                  Somewhere Near:
+                </label>
                 <input
+                  id="careers-location-input"
                   type="text"
                   value={heroLocation}
                   onChange={(e) => setHeroLocation(e.target.value)}
-                  placeholder="City, State, or ZIP"
-                  className="w-full bg-transparent text-sm text-[#081C31] placeholder:text-slate-500 focus:outline-none"
+                  placeholder="City, State Or Zip"
+                  className="w-full h-14 sm:h-16 px-5 sm:px-6 rounded-xl border border-slate-300 bg-white text-base sm:text-lg text-[#081C31] placeholder:text-slate-400 focus:outline-none focus:border-[#00558C] focus:ring-2 focus:ring-[#00558C]/20"
                 />
-              </label>
+              </div>
+
               <button
                 type="submit"
-                className="px-6 py-3 rounded-lg bg-[#E85D04] hover:bg-[#CF5102] text-white text-sm font-bold tracking-wide uppercase whitespace-nowrap shrink-0 transition-colors shadow-sm"
+                className="h-14 sm:h-16 px-10 rounded-full bg-[#001C36] hover:bg-[#00558C] text-white text-base sm:text-lg font-bold transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-md inline-flex items-center justify-center gap-2.5"
               >
-                Search Jobs
+                <Search className="w-5 h-5" aria-hidden="true" />
+                <span>Search Jobs</span>
               </button>
             </form>
 
-            <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm text-slate-300">
+            {/* Quick Search Tag Pills (Exact Screenshot Tags) */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              {QUICK_SEARCH_ROLES.map((role) => (
+                <button
+                  key={role}
+                  type="button"
+                  onClick={() => {
+                    setHeroKeyword(role);
+                    navigateToJobs({ keyword: role });
+                  }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-[#F8FAFC] hover:bg-slate-100 text-[#081C31] border border-slate-200 transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-2xs"
+                >
+                  <span>{role}</span>
+                  <Search className="w-3.5 h-3.5 opacity-60" aria-hidden="true" />
+                </button>
+              ))}
+
               <button
                 type="button"
                 onClick={() => navigateToJobs()}
-                className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-[#00A3E0] transition-colors self-start sm:self-auto cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-[#00558C] hover:text-[#001C36] underline underline-offset-4 cursor-pointer"
               >
-                <span>Browse all 3,400+ open positions</span>
+                <span>Browse All Jobs</span>
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </button>
-              <span aria-hidden="true" className="hidden sm:inline text-slate-600">|</span>
-              <Link
-                href="/locations"
-                className="hover:text-white transition-colors self-start sm:self-auto"
+            </div>
+
+            {/* Talent Network Prompt (Exact Screenshot Copy) */}
+            <div className="mt-6 pt-5 border-t border-slate-100 text-center text-sm text-slate-600">
+              <span>Not ready to apply? </span>
+              <button
+                type="button"
+                onClick={() => setActiveModal({ topic: 'talent-network' })}
+                className="font-semibold text-[#00558C] hover:text-[#001C36] underline underline-offset-2 cursor-pointer transition-colors"
               >
-                Find a local recruiting office
-              </Link>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5">
-            <div className="h-full min-h-[300px] rounded-2xl overflow-hidden bg-[#0F2942] border border-white/10 shadow-2xl">
-              {!heroImgFailed ? (
-                <img
-                  src={CAREER_IMAGES.heroCareer}
-                  alt="Skilled industrial engineers and technicians inspecting precision aerospace hardware"
-                  referrerPolicy="no-referrer"
-                  onError={() => setHeroImgFailed(true)}
-                  className="w-full h-full object-cover min-h-[320px]"
-                />
-              ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center min-h-[320px]">
-                  <HardHat className="w-14 h-14 text-[#00A3E0] mb-3" aria-hidden="true" />
-                  <p className="font-display font-bold text-xl">Industrial &amp; Skilled Trades</p>
-                  <p className="text-sm text-slate-300 mt-1">Aviation · Manufacturing · Logistics · Facilities</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Full-width Quantitative Trust Strip */}
-        <div className="border-t border-white/10 bg-[#04111F]">
-          <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 py-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <div className="font-mono tabular-nums text-3xl font-bold text-white">300,000+</div>
-              <div className="text-xs text-slate-300 mt-1 uppercase tracking-wider font-medium">Annual contractor placements</div>
-            </div>
-            <div>
-              <div className="font-mono tabular-nums text-3xl font-bold text-white">200+</div>
-              <div className="text-xs text-slate-300 mt-1 uppercase tracking-wider font-medium">Local recruiting offices</div>
-            </div>
-            <div>
-              <div className="font-mono tabular-nums text-3xl font-bold text-white">Weekly Pay</div>
-              <div className="text-xs text-slate-300 mt-1 uppercase tracking-wider font-medium">Direct deposit &amp; W-2 benefits</div>
-            </div>
-            <div>
-              <div className="font-mono tabular-nums text-3xl font-bold text-white">40+ Years</div>
-              <div className="text-xs text-slate-300 mt-1 uppercase tracking-wider font-medium">Connecting people &amp; industry</div>
+                Join our talent network to stay connected with us for future opportunities.
+              </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Main Section Heading (Exact Screenshot Typography) */}
+      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 pt-6 pb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#001C36] tracking-tight">
+          Find Industrial &amp; Skilled Trades Jobs With OperateServices
+        </h2>
+        <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto mt-4 leading-relaxed">
+          From aviation MRO and precision CNC machining to logistics automation and high-voltage commercial electrical trades, our specialized teams connect you with verified employers paying top-of-market hourly wages.
+        </p>
+      </section>
+
+      {/* Full-width Quantitative Trust Strip */}
+      <div className="border-y border-slate-200 bg-[#001428] text-white">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <div className="font-mono tabular-nums text-3xl sm:text-4xl font-extrabold text-white">300,000+</div>
+            <div className="text-xs text-slate-300 mt-1 uppercase tracking-wider font-semibold">Annual contractor placements</div>
+          </div>
+          <div>
+            <div className="font-mono tabular-nums text-3xl sm:text-4xl font-extrabold text-white">200+</div>
+            <div className="text-xs text-slate-300 mt-1 uppercase tracking-wider font-semibold">Local recruiting offices</div>
+          </div>
+          <div>
+            <div className="font-mono tabular-nums text-3xl sm:text-4xl font-extrabold text-[#00A3E0]">Weekly Pay</div>
+            <div className="text-xs text-slate-300 mt-1 uppercase tracking-wider font-semibold">Direct deposit &amp; W-2 benefits</div>
+          </div>
+          <div>
+            <div className="font-mono tabular-nums text-3xl sm:text-4xl font-extrabold text-white">40+ Years</div>
+            <div className="text-xs text-slate-300 mt-1 uppercase tracking-wider font-semibold">Connecting people &amp; industry</div>
+          </div>
+        </div>
+      </div>
 
       {/* Dual Pathways: Contractors vs Internal Employees */}
       <section id="contractors" className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 py-20">

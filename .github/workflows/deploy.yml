@@ -1,0 +1,91 @@
+name: Deploy OperateServices to DigitalOcean Droplet
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Deploy to Droplet via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          command_timeout: 60m
+          script: |
+            set -e
+
+            echo "🚀 [1/6] Loading Environment & Node.js..."
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$HOME/.bashrc" ] && \. "$HOME/.bashrc"
+            [ -s "$HOME/.profile" ] && \. "$HOME/.profile"
+            export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+            if [ -d "$NVM_DIR/versions/node" ]; then
+              LATEST_NODE=$(ls -d $NVM_DIR/versions/node/v* 2>/dev/null | tail -n 1)
+              [ -n "$LATEST_NODE" ] && export PATH="$LATEST_NODE/bin:$PATH"
+            fi
+
+            echo "Node version: $(node -v 2>/dev/null || echo 'not found')"
+            echo "NPM version: $(npm -v 2>/dev/null || echo 'not found')"
+
+            # Navigate to project directory on server
+            TARGET_DIR=""
+            if [ -d "/var/www/operateservices" ]; then
+              TARGET_DIR="/var/www/operateservices"
+            elif [ -d "/var/www/operate-services" ]; then
+              TARGET_DIR="/var/www/operate-services"
+            elif [ -d "$HOME/operateservices" ]; then
+              TARGET_DIR="$HOME/operateservices"
+            elif [ -d "$HOME/operate-services" ]; then
+              TARGET_DIR="$HOME/operate-services"
+            else
+              TARGET_DIR="/var/www/operateservices"
+              mkdir -p "$TARGET_DIR"
+            fi
+
+            cd "$TARGET_DIR"
+            echo "📂 Working directory: $(pwd)"
+
+            git config --global --add safe.directory "$TARGET_DIR" 2>/dev/null || true
+
+            echo "📥 [2/6] Syncing latest code from origin main..."
+            if [ ! -d ".git" ]; then
+              git init
+              git remote add origin https://github.com/Chanchal010/operate-services.git
+            else
+              git remote set-url origin https://github.com/Chanchal010/operate-services.git 2>/dev/null || true
+            fi
+
+            git fetch origin main
+            git checkout main 2>/dev/null || git checkout -b main origin/main 2>/dev/null || true
+            git reset --hard origin/main
+
+            echo "📦 [3/6] Installing dependencies..."
+            npm install --include=dev
+
+            echo "🔨 [4/6] Building Next.js production bundle & generating LLMs knowledge corpus..."
+            npm run build
+
+            echo "♻️ [5/6] Zero-downtime PM2 reload on port 3005..."
+            if command -v pm2 &> /dev/null; then
+              pm2 reload ecosystem.config.cjs --update-env || pm2 start ecosystem.config.cjs --only operate-services
+              pm2 save
+            else
+              npx pm2 reload ecosystem.config.cjs --update-env || npx pm2 start ecosystem.config.cjs --only operate-services
+              npx pm2 save
+            fi
+
+            echo "📡 [6/6] Submitting latest canonical URLs to IndexNow..."
+            npm run submit:indexnow || true
+
+            echo "🎉 OperateServices successfully deployed & live on operateservices.com!"

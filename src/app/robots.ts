@@ -12,10 +12,26 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/'],
+        disallow: [
+          '/api/',
+          '/*?q=',
+          '/*?filter=',
+          '/*?sort=',
+          '/*?page=',
+          '/*?search=',
+        ],
       },
       {
-        userAgent: ['GPTBot', 'PerplexityBot', 'ClaudeBot', 'Amazonbot', 'Google-Extended'],
+        // Generative Engine & AI Search Bots (Perplexity, ChatGPT, Claude, Gemini)
+        userAgent: [
+          'GPTBot',
+          'OAI-SearchBot',
+          'PerplexityBot',
+          'ClaudeBot',
+          'Applebot',
+          'Google-Extended',
+          'Amazonbot',
+        ],
         allow: '/',
         disallow: ['/api/'],
       },
