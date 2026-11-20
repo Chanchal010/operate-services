@@ -40,6 +40,15 @@ export function buildOrganizationSchema() {
     description: 'Premier industrial staffing, skilled trades placement, and operational workforce solutions across North American manufacturing belts, logistics corridors, and aviation complexes.',
     email: 'contact@operateservices.com',
     telephone: '+1-800-555-OPERATE',
+    priceRange: '$$',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '07:00',
+        closes: '18:00',
+      },
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: '100 Industrial Parkway, Suite 500',
@@ -150,8 +159,13 @@ export function buildJobPostingSchema({
     datePosted,
     validThrough,
     employmentType: 'FULL_TIME',
+    directApply: true,
     hiringOrganization: {
+      '@type': 'Organization',
       '@id': ENTITY_ORG_ID,
+      name: 'OperateServices',
+      sameAs: SITE_URL,
+      logo: `${SITE_URL}/operateservices_logo.png`,
     },
     jobLocation: {
       '@type': 'Place',
