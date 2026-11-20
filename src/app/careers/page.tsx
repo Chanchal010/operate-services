@@ -6,11 +6,14 @@ import { CareerOpportunitiesView } from '@/components/career/CareerOpportunities
 export const metadata: Metadata = {
   title: 'Career Opportunities | OperateServices',
   description:
-    'Explore industrial, skilled trades, manufacturing, aviation, logistics, and corporate careers with OperateServices. Weekly pay, comprehensive benefits, and dedicated local recruiters.',
+    'Explore industrial, manufacturing, aviation, and skilled trades careers with OperateServices. Enjoy weekly pay, great benefits, and dedicated recruiters.',
+  alternates: {
+    canonical: 'https://operateservices.com/careers',
+  },
   openGraph: {
     title: 'Career Opportunities | OperateServices',
     description:
-      'Explore industrial, skilled trades, manufacturing, aviation, logistics, and corporate careers with OperateServices.',
+      'Explore industrial, manufacturing, aviation, and skilled trades careers with OperateServices. Enjoy weekly pay, great benefits, and dedicated recruiters.',
     url: 'https://operateservices.com/careers',
     siteName: 'OperateServices',
     type: 'website',

@@ -6,11 +6,14 @@ import { LocationsView } from '@/components/career/LocationsView';
 export const metadata: Metadata = {
   title: 'Office Locations | OperateServices',
   description:
-    'Find an OperateServices recruiting office near you across the United States, Canada, and the United Kingdom. Over 200 local staffing hubs ready to assist.',
+    'Find an OperateServices staffing and recruiting office near you across the United States. Over 200 local branches ready to assist your workforce.',
+  alternates: {
+    canonical: 'https://operateservices.com/locations',
+  },
   openGraph: {
     title: 'Office Locations | OperateServices',
     description:
-      'Find an OperateServices recruiting office near you across the United States, Canada, and the United Kingdom.',
+      'Find an OperateServices staffing and recruiting office near you across the United States. Over 200 local branches ready to assist your workforce.',
     url: 'https://operateservices.com/locations',
     siteName: 'OperateServices',
     type: 'website',

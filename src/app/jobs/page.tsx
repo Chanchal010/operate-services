@@ -7,11 +7,14 @@ import { JobsPortalView } from '@/components/career/JobsPortalView';
 export const metadata: Metadata = {
   title: 'Search Industrial & Skilled Trades Jobs | OperateServices',
   description:
-    'Search thousands of open jobs across aviation, CNC machining, welding, electrical, maintenance, warehousing, and logistics with OperateServices.',
+    'Search open jobs across aviation, CNC machining, welding, electrical, maintenance, warehousing, and logistics with OperateServices. Apply today.',
+  alternates: {
+    canonical: 'https://operateservices.com/jobs',
+  },
   openGraph: {
     title: 'Search Industrial & Skilled Trades Jobs | OperateServices',
     description:
-      'Search thousands of open jobs across aviation, CNC machining, welding, electrical, maintenance, warehousing, and logistics with OperateServices.',
+      'Search open jobs across aviation, CNC machining, welding, electrical, maintenance, warehousing, and logistics with OperateServices. Apply today.',
     url: 'https://operateservices.com/jobs',
     siteName: 'OperateServices',
     type: 'website',

@@ -6,11 +6,14 @@ import { AboutUsView } from '@/components/career/AboutUsView';
 export const metadata: Metadata = {
   title: 'About Us | OperateServices',
   description:
-    'Our People Are Everything. Learn about OperateServices leadership, company history, diversity, equity & inclusion initiatives, corporate social responsibility, and military affairs.',
+    'Learn about OperateServices leadership, company history, culture, diversity initiatives, corporate responsibility, and military veteran programs.',
+  alternates: {
+    canonical: 'https://operateservices.com/about-us',
+  },
   openGraph: {
     title: 'About Us | OperateServices',
     description:
-      'Learn about OperateServices leadership, company history, DEI initiatives, and military affairs.',
+      'Learn about OperateServices leadership, company history, culture, diversity initiatives, corporate responsibility, and military veteran programs.',
     url: 'https://operateservices.com/about-us',
     siteName: 'OperateServices',
     type: 'website',
