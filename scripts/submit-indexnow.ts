@@ -16,7 +16,7 @@ import { getAllServices } from '../src/data/industrialServices';
 
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
 const HOST = 'operateservices.com';
-const KEY = 'e4f5a6b7c8d90123456789abcdef0123';
+const KEY = '5c2975189b34469d8d51b24a0659536d';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const BASE_URL = `https://${HOST}`;
 
